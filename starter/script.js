@@ -96,11 +96,20 @@ const generatedPassword = '';
 // Function to prompt user for password options
 function getPasswordOptions() {
   // Prompt for password length
-  let getLenght = parsInt(
-    prompt("Choose a password lenght between 8 and 128 char.")
+  let getLength;
+  getLength = parseInt(
+    prompt("Choose a password length between 8 and 128 char.")
   );
+  if (getLength > 7 && getLength < 129) {
+    charOptions.length = getLength;
+  } else {
+    alert("Invalid input. Choose a number between 8 and 128.")
+  }
   //Prompt to choose special char and cap letter as alert(boolean)
-  let getCapital = window.confirm("Would you like a capital letter?")
+  let getCapital = confirm("Would you like a capital letter?");
+  alert(getCapital)
+  
+
   // Conditional to check that the number that was entered is in range
   // Prompts store data as strings, so need to parse into a number
   // If the user's input is out of range, either return out of the function or call the function again
@@ -115,7 +124,7 @@ function getPasswordOptions() {
   
   // Once character sets are selected, move on to generating random characters
 }
-
+getPasswordOptions()
 // Function for getting a random element from an array
 function getRandom(arr) {
   // Need a variable to hold the password as it's being generated
