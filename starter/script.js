@@ -103,12 +103,24 @@ function getPasswordOptions() {
   if (getLength > 7 && getLength < 129) {
     charOptions.length = getLength;
   } else {
-    alert("Invalid input. Choose a number between 8 and 128.")
+    alert("Invalid input. Choose a number between 8 and 128.");
+    getPasswordOptions;
+    return;
   }
   //Prompt to choose special char and cap letter as alert(boolean)
-  let getCapital = confirm("Would you like a capital letter?");
-  alert(getCapital)
-  
+  //Create nested function to avoid a user going back to selecting password length
+  function getSpecial() {
+    let getCapital = confirm("Include upper case letters?");
+    let getLowerCase = confirm("Include lower case letters?");
+    let getNum = confirm("Include numbers?");
+    let getSpecialChar = confirm("Include special characters?");
+    if (getCapital === false && getLowerCase === false && getNum === false && getSpecialChar === false) {
+      alert("Please select at least one character type.");
+      getSpecial(); // Call the function again to prompt the user for character types
+      return;
+    }
+  }
+  getSpecial()
 
   // Conditional to check that the number that was entered is in range
   // Prompts store data as strings, so need to parse into a number
@@ -116,15 +128,16 @@ function getPasswordOptions() {
 
   // Confirm which character sets to use
   // If the user answers false for all, either return out of the function or call the function again
-  
+
   // Once they select a character set:
   // Generate a random character for each selected character set
   // Either push selected character sets to a mega-array of all selected characters
   // OR you can keep the arrays separate and generate a random number to select the array and another to select the index
-  
+
   // Once character sets are selected, move on to generating random characters
 }
 getPasswordOptions()
+
 // Function for getting a random element from an array
 function getRandom(arr) {
   // Need a variable to hold the password as it's being generated
