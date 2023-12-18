@@ -157,13 +157,14 @@ function generatePassword() {
   const options = getPasswordOptions() //assigning var to access objects in function getPasswordOptions
 
   if (options.getCapital === true) {
-   charOptions = charOptions.concat(upperCasedCharacters);
-   console.log(charOptions);
-  } else if (options.getLowerCase === true) {
-    charOptions = charOptions.concat(lowerCasedCharacters);
-  } else if (options.getNum === true) {
+  //  charOptions = charOptions.concat(upperCasedCharacters);
+    charOptions = charOptions.push(upperCasedCharacters)
+  } if (options.getLowerCase === true) {
+    // charOptions = charOptions.concat(lowerCasedCharacters);
+    charOptions = charOptions.push(lowerCasedCharacters)
+  } if (options.getNum === true) {
     charOptions = charOptions.concat(numericCharacters);
-  } else if (options.getSpecialChar === true) {
+  } if (options.getSpecialChar === true) {
     charOptions = charOptions.concat(specialCharacters);
   }
   console.log(charOptions)
