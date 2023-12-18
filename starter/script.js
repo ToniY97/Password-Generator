@@ -104,15 +104,12 @@ function getPasswordOptions() {
   );
 
   if (getLength < 8 || getLength > 128) {
-  
     alert("Invalid input. Choose a number between 8 and 128.");
-    // getPasswordOptions;
     return;
   } 
 
   //Prompt to choose special char and cap letter as boolean
   // Confirm which character sets to use//
-  //Create nested function to avoid a user going back to selecting password length//
   let getCapital = confirm("Include upper case letters?");
   let getLowerCase = confirm("Include lower case letters?");
   let getNum = confirm("Include numbers?");
@@ -125,7 +122,6 @@ function getPasswordOptions() {
   // OR you can keep the arrays separate and generate a random number to select the array and another to select the index
   if (getCapital === false && getLowerCase === false && getNum === false && getSpecialChar === false) {
     alert("Please select at least one character type.");
-  // Call the function again to prompt the user for character types
     return;
   } 
 
@@ -158,26 +154,29 @@ return indexChar
 function generatePassword() {
   let charOptions = [];
   let generatedPassword = '';
-  const options = getPasswordOptions()
+  const options = getPasswordOptions() //assigning var to access objects in function getPasswordOptions
 
   if (options.getCapital === true) {
-   charOptions = charOptions.concat(upperCasedCharacters)
-   console.log(charOptions)
+   charOptions = charOptions.concat(upperCasedCharacters);
+   console.log(charOptions);
   } else if (options.getLowerCase === true) {
-    
+    charOptions = charOptions.concat(lowerCasedCharacters);
   } else if (options.getNum === true) {
-   
+    charOptions = charOptions.concat(numericCharacters);
   } else if (options.getSpecialChar === true) {
-    
+    charOptions = charOptions.concat(specialCharacters);
   }
-
+  console.log(charOptions)
   for (let i = 0; i < options.getLength; i++) {
-   const randomLetter = getRandom(charOptions)
+   const randomLetter = getRandom(charOptions);
+   generatePassword += randomLetter;
+
   console.log(randomLetter);
+  return generatedPassword
   }
 
 
-  console.log(generatedPassword); 
+  // console.log(generatedPassword); 
 }
 
 // Get references to the #generate element
