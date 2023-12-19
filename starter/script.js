@@ -99,14 +99,14 @@ function getPasswordOptions() {
   // Conditional to check that the number that was entered is in range//
   // Prompts store data as strings, so need to parse into a number//
   // If the user's input is out of range, call the function again//
- let getLength = parseInt(
+  let getLength = parseInt(
     prompt("Choose a password length between 8 and 128 char.")
   );
 
   if (getLength < 8 || getLength > 128) {
     alert("Invalid input. Choose a number between 8 and 128.");
     return;
-  } 
+  }
 
   //Prompt to choose special char and cap letter as boolean
   // Confirm which character sets to use//
@@ -123,31 +123,28 @@ function getPasswordOptions() {
   if (getCapital === false && getLowerCase === false && getNum === false && getSpecialChar === false) {
     alert("Please select at least one character type.");
     return;
-  } 
+  }
 
   return {
     getLength: getLength,
     getCapital: getCapital,
     getLowerCase: getLowerCase,
-    getNum:  getNum,
+    getNum: getNum,
     getSpecialChar: getSpecialChar
   }
-  
- 
+
+
 }
 
 // Function for getting a random element from an array
+// Generate a random number
+// That number is the index for a character in the mega-array
 function getRandom(arr) {
   // Need a variable to hold the password as it's being generated//
   // Need a variable to hold the index that's being generated
   const indexChar = arr[Math.floor(Math.random() * arr.length)];
-  // For loop that loops the number of times that matches the length the user chose
-  // Generate a random number
-  // That number is the index for a character in the mega-array
-  // So then, mega-array[generated-index] is the actual character
-  // Add that character to the password
- return indexChar
-  // Once we finish the for loop, return the generated password
+
+  return indexChar
 }
 
 // Function to generate password with user input
@@ -156,8 +153,10 @@ function generatePassword() {
   let generatedPassword = '';
   const options = getPasswordOptions() //assigning var to access objects in function getPasswordOptions
 
+  // mega-array[generated-index] is the actual character
+  // Add that characters to the password
   if (options.getCapital === true) {
-    charOptions = charOptions.concat(upperCasedCharacters); 
+    charOptions = charOptions.concat(upperCasedCharacters);
   } if (options.getLowerCase === true) {
     charOptions = charOptions.concat(lowerCasedCharacters);
   } if (options.getNum === true) {
@@ -165,19 +164,16 @@ function generatePassword() {
   } if (options.getSpecialChar === true) {
     charOptions = charOptions.concat(specialCharacters);
   }
-  console.log(charOptions)
 
+  // For loop that loops the number of times that matches the length the user chose
+  // Once we finish the for loop, return the generated password
   for (let i = 0; i < options.getLength; i++) {
-   const randomLetter = getRandom(charOptions);
-   generatedPassword += randomLetter;
+    const randomLetter = getRandom(charOptions);
+    generatedPassword += randomLetter;
 
-  // console.log(randomLetter);
-  // console.log(generatedPassword);
- 
   }
   return generatedPassword
 
-   
 }
 
 // Get references to the #generate element
