@@ -172,10 +172,10 @@ function generatePassword() {
    generatedPassword += randomLetter;
 
   // console.log(randomLetter);
-  console.log(generatedPassword);
-  return generatedPassword
+  // console.log(generatedPassword);
+ 
   }
-
+  return generatedPassword
 
    
 }
