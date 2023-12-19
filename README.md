@@ -1,7 +1,21 @@
 # Password-Generator
 
 The task at hand is to create a program that generate password, given the length and charachters chosen by user. 
-Steps to write the code:
+How the program should work:
+
+* Generate a password when the button is clicked
+  * Present a series of prompts for password criteria
+    * Length of password
+      * At least 8 characters but no more than 128.
+    * Character types
+      * Lowercase
+      * Uppercase
+      * Numeric
+      * Special characters ($@%&*, etc)
+  * Code should validate for each input and at least one character type should be selected
+  * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
+
+  Steps to write code:
 
 // Function to prompt user for password 
   // Prompt for password length
