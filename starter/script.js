@@ -94,11 +94,11 @@ function getPasswordOptions() {
 
   // You can store the generatedPassword as a string and concat each character OR
   // as an array and push each character, then join once you have enough characters
+
   // Prompt for password length//
   // Conditional to check that the number that was entered is in range//
   // Prompts store data as strings, so need to parse into a number//
   // If the user's input is out of range, call the function again//
-  
  let getLength = parseInt(
     prompt("Choose a password length between 8 and 128 char.")
   );
@@ -146,7 +146,7 @@ function getRandom(arr) {
   // That number is the index for a character in the mega-array
   // So then, mega-array[generated-index] is the actual character
   // Add that character to the password
-return indexChar
+ return indexChar
   // Once we finish the for loop, return the generated password
 }
 
@@ -157,27 +157,27 @@ function generatePassword() {
   const options = getPasswordOptions() //assigning var to access objects in function getPasswordOptions
 
   if (options.getCapital === true) {
-  //  charOptions = charOptions.concat(upperCasedCharacters);
-    charOptions = charOptions.push(upperCasedCharacters)
+    charOptions = charOptions.concat(upperCasedCharacters); 
   } if (options.getLowerCase === true) {
-    // charOptions = charOptions.concat(lowerCasedCharacters);
-    charOptions = charOptions.push(lowerCasedCharacters)
+    charOptions = charOptions.concat(lowerCasedCharacters);
   } if (options.getNum === true) {
     charOptions = charOptions.concat(numericCharacters);
   } if (options.getSpecialChar === true) {
     charOptions = charOptions.concat(specialCharacters);
   }
   console.log(charOptions)
+
   for (let i = 0; i < options.getLength; i++) {
    const randomLetter = getRandom(charOptions);
-   generatePassword += randomLetter;
+   generatedPassword += randomLetter;
 
-  console.log(randomLetter);
+  // console.log(randomLetter);
+  console.log(generatedPassword);
   return generatedPassword
   }
 
 
-  // console.log(generatedPassword); 
+   
 }
 
 // Get references to the #generate element
